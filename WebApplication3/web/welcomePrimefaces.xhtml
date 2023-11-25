@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>PrimeFaces</title>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:panel header="Header">
+                        <p:panelGrid columns="3">
+                            <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="f">
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:panel header="Gestion des services">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="id" />
+                                <p:inputText value="#{serviceBean.service.id}" />
+                                <p:outputLabel value="Nom" />
+                                <p:inputText value="#{serviceBean.service.nom}" />
+
+                                <p:commandButton value="Add" actionListener="#{serviceBean.onCreateAction()}" update=":f" />
+                                <p:commandButton value="Delete" actionListener="#{serviceBean.onDeleteAction()}" update=":f" rendered="#{s ne null}" oncomplete="confirmation.show()" />
+                            </p:panelGrid>
+                        </p:panel>
+
+                        <p:panel header="Liste">
+                            <p:dataTable var="s" value="#{serviceBean.services}">
+                                <p:column filterBy="#{s.id}" headerText="id">
+                                    <h:outputText value="#{s.id}" />
+                                </p:column>
+                                <p:column headerText="nom">
+                                    <h:outputText value="#{s.nom}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="delete" icon="ui-icon-trash" onclick="confirmation.show()">
+                                        <f:setPropertyActionListener target="#{serviceBean.service}" value="#{s}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+
+                        <!-- Boîte de dialogue de confirmation -->
+                        <p:confirmDialog id="confirmDialog" widgetVar="confirmation" showEffect="fade" hideEffect="fade" header="Confirmation">
+                            <h:outputText value="Voulez-vous vraiment supprimer ce service?" />
+                            <p:commandButton id="confirm" value="Oui" update=":f messages" oncomplete="confirmation.hide()" actionListener="#{serviceBean.onDeleteAction}" />
+                            <p:commandButton id="decline" value="Non" onclick="confirmation.hide()" type="button" />
+                        </p:confirmDialog>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
