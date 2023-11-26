@@ -5,10 +5,10 @@ avec le serveur GlassFish. La classe AbstractFacade est également mise en œuvr
 L'ensemble du projet a pour but de fournir une solution conviviale de gestion, comprenant des fonctionnalités telles que l'authentification de l'administrateur,
 la gestion des services, la gestion des employés, ainsi que la présentation de statistiques sous forme de graphiques.
 # Technologies Utilisées
-Java
-JavaServer Faces (JSF)
-PrimeFaces
-Base de données (mentionnez la base de données utilisée)
+/Java                                       
+/JavaServer Faces (JSF)
+/PrimeFaces
+/Base de données (mentionnez la base de données utilisée)
 # les fonctionnalités implémentées
 les operations CRUD pour les employes.
 les opérations CRUD pour les services.
