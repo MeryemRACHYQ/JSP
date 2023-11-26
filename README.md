@@ -6,9 +6,9 @@ L'ensemble du projet a pour but de fournir une solution conviviale de gestion, c
 la gestion des services, la gestion des employés, ainsi que la présentation de statistiques sous forme de graphiques.
 # Technologies Utilisées
 /Java                                       
-/JavaServer Faces (JSF)
-/PrimeFaces
-/Base de données (mentionnez la base de données utilisée)
+/JavaServer Faces (JSF)                                           
+/PrimeFaces                                                    
+/Base de données (mentionnez la base de données utilisée)                     
 # les fonctionnalités implémentées
 les operations CRUD pour les employes.
 les opérations CRUD pour les services.
